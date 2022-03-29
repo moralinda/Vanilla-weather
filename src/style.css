@@ -41,7 +41,7 @@ li {
   margin-right: -10px;
 }
 
-.temperature {
+#temperature {
   font-weight: 400;
   font-size: 50px;
 }
