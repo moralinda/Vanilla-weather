@@ -1,3 +1,26 @@
+function formatDate(timestamp) {
+  let currentDate = new Date(timestamp);
+  let currentHours = currentDate.getHours();
+  if (currentHours < 10) {
+    let currentHours = `0${currentHours}`;
+  }
+  let currentMinutes = currentDate.getMinutes();
+  if (currentMinutes < 10) {
+    currentMinutes = `0${currentMinutes} `;
+  }
+  let days = [
+    "sunday",
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday",
+  ];
+  let currentDay = days[currentDate.getDay()];
+  return `${currentDay} ${currentHours}: ${currentMinutes}`;
+}
+
 function showTemperature(response) {
   let currentTemperature = Math.round(response.data.main.temp);
   document.querySelector("#temperature").innerHTML = `${currentTemperature}`;
@@ -9,6 +32,9 @@ function showTemperature(response) {
   document.querySelector("#humidity").innerHTML = `${currentHumidity}`;
   let currentWind = Math.round(response.data.wind.speed);
   document.querySelector("#wind").innerHTML = `${currentWind}`;
+  document.querySelector("#date").innerHTML = formatDate(
+    response.data.dt * 1000
+  );
 }
 
 let apiKey = "46282d6c2bfaf109c807f0208a634585";
