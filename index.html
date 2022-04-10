@@ -18,6 +18,28 @@
     <div class="container">
       <div class="app-wrap">
         <div class="weather-app">
+          <form id="weather-search">
+            <div class="row">
+              <div class="col-9">
+                <input
+                  type="search"
+                  placeholder="Enter a city"
+                  class="form-control shadow-sm"
+                  autofocus="on"
+                  autocomplete="off"
+                  id="search-text-input"
+                />
+              </div>
+              <div class="col-3">
+                <input
+                  type="submit"
+                  value="Search"
+                  class="form-control btn btn-primary shawdo-sm"
+                />
+              </div>
+            </div>
+          </form>
+
           <h1 id="city"></h1>
           <ul>
             <li>last updated: <span id="date"></span></li>
