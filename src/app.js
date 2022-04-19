@@ -2,7 +2,7 @@ function formatDate(timestamp) {
   let currentDate = new Date(timestamp);
   let currentHours = currentDate.getHours();
   if (currentHours < 10) {
-    let currentHours = `0${currentHours}`;
+    currentHours = `0${currentHours}`;
   }
   let currentMinutes = currentDate.getMinutes();
   if (currentMinutes < 10) {
@@ -46,16 +46,18 @@ function showTemperature(response) {
     .setAttribute("alt", response.data.weather[0].description);
 }
 
-function handleSubmit(event) {
-  event.preventDefault();
-  let cityInput = document.querySelectorAll("#search-text-input");
-  console.log(cityInput.value);
+function search(city) {
+  let apiKey = "46282d6c2bfaf109c807f0208a634585";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showTemperature);
 }
 
-let apiKey = "46282d6c2bfaf109c807f0208a634585";
-let city = "paris";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-axios.get(apiUrl).then(showTemperature);
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInput = document.querySelector("#search-text-input");
+  search(cityInput.value);
+}
 
+search("paris");
 let form = document.querySelector("#weather-search");
 form.addEventListener("submit", handleSubmit);
