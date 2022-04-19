@@ -61,3 +61,17 @@ li {
   text-decoration: none;
   color: black;
 }
+
+.weather-date-forecast {
+  font-size: 16px;
+  color: #70757a;
+}
+
+.weather-forecast-temperature {
+  font-size: 13px;
+  color: #70757a;
+}
+
+.weather-forecast-temperature-min {
+  opacity: 0.8;
+}
