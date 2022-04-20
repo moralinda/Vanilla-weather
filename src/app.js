@@ -20,6 +20,29 @@ function formatDate(timestamp) {
   let currentDay = days[currentDate.getDay()];
   return `${currentDay} ${currentHours}:${currentMinutes}`;
 }
+function showForecast() {
+  let forecastHtml = `<div class="row">`;
+  let days = ["mon", "tues", "wed"];
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `    <div class="col-2">
+                <div class="weather-date-forecast">${day}</div>
+                <img
+                  src="http://openweathermap.org/img/wn/01n@2x.png"
+                  width="36px"
+                />
+                <div class="weather-forecast-temperature">
+                  <span class="weather-forecast-temperature-max">18°</span>
+                  <span class="weather-forecast-temperature-min">12°</span>
+                </div>
+            </div>
+  `;
+  });
+
+  forecastHtml = forecastHtml + `</div>`;
+  document.querySelector("#forecast").innerHTML = forecastHtml;
+}
 
 function showTemperature(response) {
   celsiusTemperature = response.data.main.temp;
@@ -84,3 +107,4 @@ fahrenheitLink.addEventListener("click", showFahrenheitTemperature);
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", showCelsiusTemperature);
 search("paris");
+showForecast();
